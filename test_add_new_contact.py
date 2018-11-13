@@ -10,23 +10,29 @@ class TestAddNewContact(unittest.TestCase):
         self.wd.implicitly_wait(30)
 
     def test_add_new_contact(self):
-        wd = self.wd
-        self.open_homepage(wd)
-        self.login(wd, username="admin", password="secret")
-        self.click_add_new(wd)
-        self.try_to_upload_foto(wd)
-        self.create_new_contact(wd, Contact(firstname="Denis", middlename="Butylin", lastname="lastname",
-                                nickname="nickname", title="title", company="company", address="address",
-                                home="home", mobile="mobile", work="work", fax="fax",
-                                email="email1", email2="email2", email3="email3",
-                                homepage="homepage", address2="address2", phone2="phone2", notes="notes"))
+        self.login(username="admin", password="secret")
+        self.create_new_contact(Contact(firstname="Denis", middlename="Butylin", lastname="lastname",
+                                        nickname="nickname", title="title", company="company", address="address",
+                                        home="home", mobile="mobile", work="work", fax="fax",
+                                        email="email1", email2="email2", email3="email3",
+                                        homepage="homepage",  bday="29", bmonth="April", byear="1992",
+                                        aday="1", amonth="January", ayear="2000",
+                                        address2="address2", phone2="phone2", notes="notes"))
 
+        self.logout()
+
+    def logout(self):
+        wd = self.wd
         wd.find_element_by_link_text("Logout").click()
 
-    def try_to_upload_foto(self, wd):
+    def try_to_upload_foto(self):
+        wd = self.wd
         wd.find_element_by_name("photo").send_keys(r"C:\PycharmProjects\123\OklqbFQ_dbA.jpg")
 
-    def create_new_contact(self, wd, contact):
+    def create_new_contact(self, contact):
+        wd = self.wd
+        self.click_add_new()
+        self.try_to_upload_foto()
         # Заполняет данные в форму
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
@@ -59,24 +65,14 @@ class TestAddNewContact(unittest.TestCase):
         wd.find_element_by_name("email3").send_keys(contact.email3)
         wd.find_element_by_name("homepage").clear()
         wd.find_element_by_name("homepage").send_keys(contact.homepage)
-        wd.find_element_by_name("bday").click()
-        Select(wd.find_element_by_name("bday")).select_by_visible_text("10")
-        wd.find_element_by_xpath("//option[12]").click()
-        wd.find_element_by_name("bmonth").click()
-        Select(wd.find_element_by_name("bmonth")).select_by_visible_text("June")
-        wd.find_element_by_xpath("//select[2]/option[7]").click()
-        wd.find_element_by_name("byear").click()
-        wd.find_element_by_name("byear").clear()
-        wd.find_element_by_name("byear").send_keys("1992")
-        wd.find_element_by_name("aday").click()
-        Select(wd.find_element_by_name("aday")).select_by_visible_text("16")
-        wd.find_element_by_xpath("//select[3]/option[18]").click()
-        wd.find_element_by_name("amonth").click()
-        Select(wd.find_element_by_name("amonth")).select_by_visible_text("January")
-        wd.find_element_by_xpath("//select[4]/option[2]").click()
-        wd.find_element_by_name("ayear").click()
-        wd.find_element_by_name("ayear").clear()
-        wd.find_element_by_name("ayear").send_keys("2000")
+
+        Select(wd.find_element_by_name("bday")).select_by_visible_text(contact.bday)
+        Select(wd.find_element_by_name("bmonth")).select_by_visible_text(contact.bmonth)
+        wd.find_element_by_name("byear").send_keys(contact.byear)
+        Select(wd.find_element_by_name("aday")).select_by_visible_text(contact.aday)
+        Select(wd.find_element_by_name("amonth")).select_by_visible_text(contact.amonth)
+        wd.find_element_by_name("ayear").send_keys(contact.ayear)
+
         wd.find_element_by_name("address2").click()
         wd.find_element_by_name("address2").clear()
         wd.find_element_by_name("address2").send_keys(contact.address2)
@@ -88,13 +84,18 @@ class TestAddNewContact(unittest.TestCase):
         wd.find_element_by_name("notes").send_keys(contact.notes)
         wd.find_element_by_name("submit").click()
 
-    def open_homepage(self, wd):
+
+    def open_homepage(self):
+        wd = self.wd
         wd.get("http://localhost/addressbook/")
 
-    def click_add_new(self, wd):
+    def click_add_new(self):
+        wd = self.wd
         wd.find_element_by_link_text("add new").click()
 
-    def login(self, wd, username, password):
+    def login(self, username, password):
+        wd = self.wd
+        self.open_homepage()
         # Login
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
