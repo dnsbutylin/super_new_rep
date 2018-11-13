@@ -14,7 +14,7 @@ class TestAddNewContact(unittest.TestCase):
         self.open_homepage(wd)
         self.login(wd, username="admin", password="secret")
         self.click_add_new(wd)
-        #self.try_to_upload_foto()
+        self.try_to_upload_foto(wd)
         self.create_new_contact(wd, Contact(firstname="Denis", middlename="Butylin", lastname="lastname",
                                 nickname="nickname", title="title", company="company", address="address",
                                 home="home", mobile="mobile", work="work", fax="fax",
@@ -23,11 +23,8 @@ class TestAddNewContact(unittest.TestCase):
 
         wd.find_element_by_link_text("Logout").click()
 
-    def try_to_upload_foto(self):
-        pass
-        # wd.find_element_by_name("photo").click()
-        # wd.find_element_by_name("photo").clear()
-        # wd.find_element_by_name("photo").send_keys(r"OklqbFQ_dbA.jpg")
+    def try_to_upload_foto(self, wd):
+        wd.find_element_by_name("photo").send_keys(r"C:\PycharmProjects\123\OklqbFQ_dbA.jpg")
 
     def create_new_contact(self, wd, contact):
         # Заполняет данные в форму
