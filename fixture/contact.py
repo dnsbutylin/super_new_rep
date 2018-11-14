@@ -10,10 +10,7 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_element_by_link_text("add new").click()
 
-    def destroy(self):
-        self.app.wd.quit()
-
-    def create_new(self, contact):
+    def create(self, contact):
         wd = self.app.wd
         self.click_add_new()
         wd.find_element_by_name("photo").send_keys(r"C:\PycharmProjects\123\OklqbFQ_dbA.jpg")
