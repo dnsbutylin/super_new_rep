@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-import unittest, pytest
-from contact import Contact
-from application import Application
+import pytest
+from model.contact import Contact
+from fixture.application import Application
 
 
 @pytest.fixture
@@ -9,6 +9,7 @@ def app(request):
     fixture = Application()
     request.addfinalizer(fixture.destroy)
     return fixture
+
 
 def test_add_new_contact(app):
     app.login(username="admin", password="secret")
@@ -19,6 +20,5 @@ def test_add_new_contact(app):
                                     homepage="homepage",  bday="29", bmonth="April", byear="1992",
                                     aday="1", amonth="January", ayear="2000",
                                     address2="address2", phone2="phone2", notes="notes"))
-
     app.logout()
 
