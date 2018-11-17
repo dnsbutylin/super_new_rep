@@ -24,7 +24,8 @@ class ContactHelper:
         self.change_field_value('middlename', contact.middlename)
         self.change_field_value('lastname', contact.lastname)
         self.change_field_value('nickname', contact.nickname)
-        wd.find_element_by_name("photo").send_keys(r"C:\PycharmProjects\123\OklqbFQ_dbA.jpg")
+        self.change_field_value('photo', contact.photo)
+        #wd.find_element_by_name("photo").send_keys(r"C:\PycharmProjects\123\OklqbFQ_dbA.jpg")
         self.change_field_value('title', contact.title)
         self.change_field_value('company', contact.company)
         self.change_field_value('address', contact.address)
@@ -52,28 +53,28 @@ class ContactHelper:
             if field_name == 'bday' or field_name == 'bmonth' or field_name == 'aday' or field_name == 'amonth':
                 Select(wd.find_element_by_name(field_name)).select_by_visible_text(text)
             else:
-                wd.find_element_by_name(field_name).click()
                 wd.find_element_by_name(field_name).clear()
                 wd.find_element_by_name(field_name).send_keys(text)
 
     def delete_first_contact(self):
         wd = self.app.wd
         self.open_contact_list()
-        self.selected_first_contact()
+        self.select_first_contact()
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to_alert().accept()
 
     def modify_first_contact(self, new_contact_data):
         wd = self.app.wd
         self.open_contact_list()
-        self.selected_first_contact()
+        self.select_first_contact()
         # Нажимаем карандашик (редактировать)
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
-        self.create(new_contact_data)
+        #Заполняем новые данные в форму
+        self.fill_contact_form(new_contact_data)
         # Нажимаем кнопку update
         wd.find_element_by_name("update").click()
 
-    def selected_first_contact(self):
+    def select_first_contact(self):
         wd = self.app.wd
         wd.find_element_by_name('selected[]').click()
 

@@ -5,7 +5,7 @@ from model.contact import Contact
 def test_add_new_contact(app):
     app.session.login(username="admin", password="secret")
     app.contact.create(Contact(firstname="Denis", middlename="Butylin", lastname="lastname",
-                               nickname="nickname", title="title", company="company", address="address",
+                               nickname="nickname", photo=r"C:\PycharmProjects\123\OklqbFQ_dbA.jpg", title="title", company="company", address="address",
                                home="home", mobile="mobile", work="work", fax="fax",
                                email="email1", email2="email2", email3="email3",
                                homepage="homepage", bday="29", bmonth="April", byear="1992",
