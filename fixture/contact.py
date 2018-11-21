@@ -61,7 +61,9 @@ class ContactHelper:
         self.open_contact_list()
         self.select_first_contact()
         wd.find_element_by_xpath("//input[@value='Delete']").click()
-        wd.switch_to_alert().accept()
+        wd.switch_to.alert
+
+        #self.open_contact_list()
 
     def modify_first_contact(self, new_contact_data):
         wd = self.app.wd
