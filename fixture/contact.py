@@ -25,7 +25,6 @@ class ContactHelper:
         self.change_field_value('lastname', contact.lastname)
         self.change_field_value('nickname', contact.nickname)
         self.change_field_value('photo', contact.photo)
-        #wd.find_element_by_name("photo").send_keys(r"C:\PycharmProjects\123\OklqbFQ_dbA.jpg")
         self.change_field_value('title', contact.title)
         self.change_field_value('company', contact.company)
         self.change_field_value('address', contact.address)
@@ -61,9 +60,8 @@ class ContactHelper:
         self.open_contact_list()
         self.select_first_contact()
         wd.find_element_by_xpath("//input[@value='Delete']").click()
-        wd.switch_to.alert
-
-        #self.open_contact_list()
+        wd.switch_to.alert.accept()
+        self.open_contact_list()
 
     def modify_first_contact(self, new_contact_data):
         wd = self.app.wd
@@ -82,7 +80,8 @@ class ContactHelper:
 
     def open_contact_list(self):
         wd = self.app.wd
-        wd.find_element_by_link_text("home").click()
+        if not(wd.current_url.endswith('/addressbook/') and len(wd.find_elements_by_link_text("Last name")) == 1):
+            wd.find_element_by_link_text("home").click()
 
     def count(self):
         wd = self.app.wd
