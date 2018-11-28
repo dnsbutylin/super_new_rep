@@ -80,7 +80,8 @@ class ContactHelper:
 
     def open_contact_list(self):
         wd = self.app.wd
-        if not(wd.current_url.endswith('/addressbook/') and len(wd.find_elements_by_link_text("Last name")) == 1):
+        if not(wd.current_url.endswith('/addressbook/') and
+               len(wd.find_elements_by_link_text("Last name")) == 1):
             wd.find_element_by_link_text("home").click()
 
     def count(self):
