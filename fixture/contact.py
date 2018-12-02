@@ -103,6 +103,3 @@ class ContactHelper:
         return contacts
 
 
-
-
-

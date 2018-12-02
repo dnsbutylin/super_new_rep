@@ -6,7 +6,7 @@ def test_add_contact(app):
     old_contacts = app.contact.get_contact_list()
     contact = Contact(firstname="Denis", middlename="Butylin", lastname="lastname",
                                nickname="nickname",
-                               photo=r"C:\Projects_Selenium\super_new_rep\OklqbFQ_dbA.jpg",
+                               photo=r"C:\OklqbFQ_dbA.jpg",
                                title="title", company="company", address="address",
                                home="home", mobile="mobile", work="work", fax="fax",
                                email="email1", email2="email2", email3="email3",
@@ -16,5 +16,6 @@ def test_add_contact(app):
     app.contact.create(contact)
     new_contacts = app.contact.get_contact_list()
     assert len(old_contacts) + 1 == len(new_contacts)
-
+    old_contacts.append(contact)
+    assert sorted(old_contacts, key = Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
 
