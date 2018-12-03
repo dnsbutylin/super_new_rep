@@ -76,8 +76,8 @@ class ContactHelper:
         wd = self.app.wd
         self.open_contact_list()
         self.select_contact_by_index(index)
-        # Нажимаем карандашик (редактировать)
-        wd.find_element_by_xpath("//img[@alt='Edit']").click()
+        # Нажимаем нужный карандашик по индексу выбранного элемента + 1 (редактировать)
+        wd.find_element_by_xpath("(//img[@alt='Edit'])[" + str(index+1) + "]").click()
         #Заполняем новые данные в форму
         self.fill_contact_form(new_contact_data)
         # Нажимаем кнопку update
