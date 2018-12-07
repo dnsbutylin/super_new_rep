@@ -114,9 +114,10 @@ class ContactHelper:
                 id = cells[0].find_element_by_name('selected[]').get_attribute('value')
                 lastname = cells[1].text
                 firstname = cells[2].text
+                address = cells[3].text
                 all_emails = cells[4].text
                 all_phones = cells[5].text
-                self.contact_cache.append(Contact(firstname=firstname, lastname=lastname, id=id,
+                self.contact_cache.append(Contact(firstname=firstname, lastname=lastname, address=address, id=id,
                                                   all_phones_from_home_page=all_phones, all_emails_from_home_page=all_emails))
         # Возвращаем копию кеша
         return list(self.contact_cache)
@@ -140,6 +141,7 @@ class ContactHelper:
         self.open_contact_to_edit_by_index(index)
         firstname = wd.find_element_by_name('firstname').get_attribute('value')
         lastname = wd.find_element_by_name('lastname').get_attribute('value')
+        address = wd.find_element_by_name('address').get_attribute('value')
         id = wd.find_element_by_name('id').get_attribute('value')
         home = wd.find_element_by_name('home').get_attribute('value')
         work = wd.find_element_by_name('work').get_attribute('value')
@@ -148,7 +150,7 @@ class ContactHelper:
         email = wd.find_element_by_name('email').get_attribute('value')
         email2 = wd.find_element_by_name('email2').get_attribute('value')
         email3 = wd.find_element_by_name('email3').get_attribute('value')
-        return Contact(firstname=firstname, lastname=lastname, id=id,
+        return Contact(firstname=firstname, lastname=lastname, address=address, id=id,
                        home=home, work=work,
                        mobile=mobile, phone2=phone2, email=email, email2=email2, email3=email3)
 
