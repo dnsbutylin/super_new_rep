@@ -126,14 +126,14 @@ class ContactHelper:
         wd = self.app.wd
         self.app.open_homepage()
         row = wd.find_elements_by_name('entry')[index]
-        cell = wd.find_elements_by_tag_name('td')[7]
+        cell = row.find_elements_by_tag_name('td')[7]
         cell.find_element_by_tag_name('a').click()
 
     def open_contact_view_by_index(self, index):
         wd = self.app.wd
         self.app.open_homepage()
         row = wd.find_elements_by_name('entry')[index]
-        cell = wd.find_elements_by_tag_name('td')[6]
+        cell = row.find_elements_by_tag_name('td')[6]
         cell.find_element_by_tag_name('a').click()
 
     def get_contact_info_from_edit_page(self, index):
