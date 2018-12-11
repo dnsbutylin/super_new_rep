@@ -19,13 +19,20 @@ def random_string(prefix, maxlen):
  #      address2="address2", phone2="phone2", notes="notes")]
 
 test_data = [
-    Contact(firstname=random_string('firstname', 15), middlename=random_string('middlename', 15), lastname=random_string('lastname', 15),
-            nickname=random_string('nickname', 15), photo=r"C:\OklqbFQ_dbA.jpg", title=random_string('title', 15),
-            company=random_string('company', 15), address=random_string('address', 15), home=random_string('home', 15),
-            mobile=random_string('mobile', 15), work=random_string('work', 15), fax=random_string('fax', 15),
-            email=random_string('email', 15), email2=random_string('email2', 15), email3=random_string('email3', 15),
-            homepage=random_string('homepage', 15), bday="29", bmonth="April", byear=random_string('', 15),
-            aday="1", amonth="January", ayear=random_string('', 15), address2=random_string('address2', 15),
+    Contact(firstname=random_string('firstname', 15), middlename=random_string('middlename', 15),
+            lastname=random_string('lastname', 15), nickname=random_string('nickname', 15),
+            photo=r"C:\Projects_Selenium\super_new_rep\OklqbFQ_dbA.jpg",
+            title=random_string('title', 15),
+            company=random_string('company', 15), address=random_string('address', 15),
+            home=random_string('home', 15),
+            mobile=random_string('mobile', 15), work=random_string('work', 15),
+            fax=random_string('fax', 15),
+            email=random_string('email', 15), email2=random_string('email2', 15),
+            email3=random_string('email3', 15),
+            homepage=random_string('homepage', 15), bday="29", bmonth="April",
+            byear=random_string('', 15),
+            aday="1", amonth="January", ayear=random_string('', 15),
+            address2=random_string('address2', 15),
             phone2=random_string('phone2', 15), notes=random_string('notes', 15))
     for i in range(2)
 ]
