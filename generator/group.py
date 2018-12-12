@@ -12,6 +12,7 @@ except getopt.GetoptError as err:
     getopt.usage()
     sys.exit(2)
 
+# Значения по умолчанию (не используются) данные берутся из параметров конфигурации
 n=5
 f='data/groups.json'
 
