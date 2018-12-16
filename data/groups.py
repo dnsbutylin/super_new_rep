@@ -1,17 +1,23 @@
-from model.group import Group
-
-
-
-testdata = [
-    Group(name='name1', header='header1', footer='footer1'),
-    Group(name='name2', header='header2', footer='footer2')
+[
+  {
+    "py/object": "model.group.Group",
+    "footer": "",
+    "header": "",
+    "id": null,
+    "name": ""
+  },
+  {
+    "py/object": "model.group.Group",
+    "footer": "footer0ADmFtF",
+    "header": "headerAfxtRilERnnti4u",
+    "id": null,
+    "name": "nameku"
+  },
+  {
+    "py/object": "model.group.Group",
+    "footer": "footerJg",
+    "header": "headerS7Fyh6wWzSO",
+    "id": null,
+    "name": "name74GqrzSn"
+  }
 ]
-
-#testdata = [
-#    Group(name=name, header=header, footer=footer)
-#    for name in ['', random_string('name', 10)]
-#    for header in ['', random_string('header', 20)]
-#    for footer in ['', random_string('footer', 20)]
-#]
-
-

@@ -30,7 +30,7 @@ def random_string(prefix, maxlen):
 testdata = [
     Contact(firstname=random_string('firstname', 15), middlename=random_string('middlename', 15),
             lastname=random_string('lastname', 15), nickname=random_string('nickname', 15),
-            photo=r"C:\Projects_Selenium\super_new_rep\OklqbFQ_dbA.jpg",
+            photo=r"C:\OklqbFQ_dbA.jpg",
             title=random_string('title', 15),
             company=random_string('company', 15), address=random_string('address', 15),
             home=random_string('home', 15),
