@@ -92,6 +92,17 @@ class ContactHelper:
         wd.find_element_by_name("update").click()
         self.contact_cache = None
 
+    def modify_contact_by_id(self, id, new_contact_data):
+        wd = self.app.wd
+        self.open_contact_list()
+        #Закомменчено, так как не обязательно ставить галочку у элемента
+        #перед тем, как нажать карандашик
+        #self.select_contact_by_id(id)
+        # Нажимаем нужный карандашик по индексу выбранного элемента + 1 (редактировать)
+        wd.find_element_by_css_selector("a[href='edit.php?id=%s']" % id).click()
+        self.fill_contact_form(new_contact_data)
+        wd.find_element_by_name("update").click()
+        self.contact_cache = None
 
     def select_first_contact(self):
         wd = self.app.wd

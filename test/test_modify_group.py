@@ -9,7 +9,6 @@ def test_modify_group_name(app, db, check_ui):
     index = randrange(len(old_groups))
     group = Group(name='New_group')
     group.id = old_groups[index].id
-    #app.group.modify_group_by_index(index, group)
     app.group.modify_group_by_id(group.id, group)
     new_groups = db.get_group_list()
     assert len(old_groups) == len(new_groups)
