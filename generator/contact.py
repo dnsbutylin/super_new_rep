@@ -13,7 +13,7 @@ except getopt.GetoptError as err:
     sys.exit(2)
 
 # Значения по умолчанию (не используются) данные берутся из параметров конфигурации
-n=5
+n=1
 f='data/contacts.json'
 
 for o, a in opts:

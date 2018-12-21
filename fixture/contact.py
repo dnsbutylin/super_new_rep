@@ -127,8 +127,15 @@ class ContactHelper:
         self.open_contact_list()
         return len(wd.find_elements_by_name('selected[]'))
 
-    contact_cache = None
+    def add_to_group(self, contact_id, group_name):
+        wd = self.app.wd
+        self.open_contact_list()
+        self.select_contact_by_id(contact_id)
+        Select(wd.find_element_by_name("to_group")).select_by_visible_text(group_name)
+        wd.find_element_by_name("add").click()
 
+
+    contact_cache = None
     def get_contact_list(self):
         if self.contact_cache is None:
             wd = self.app.wd
