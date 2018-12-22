@@ -12,4 +12,4 @@ def test_delete_contact_from_group(app, db):
     if l == []:
         assert False
     else:
-        
+
