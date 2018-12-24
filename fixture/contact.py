@@ -81,6 +81,7 @@ class ContactHelper:
 
     def delete_contact_from_group(self, contact_id, group):
         wd = self.app.wd
+        self.open_contact_list()
         wd.find_element_by_name("group").click()
         Select(wd.find_element_by_name("group")).select_by_visible_text(group.name)
         wd.find_element_by_xpath("//option[@value='%s']" % str(group.id)).click()
