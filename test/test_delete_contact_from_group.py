@@ -1,7 +1,5 @@
-from model.contact import Contact
-from fixture.orm import ORMFixture
-
 import random
+
 
 def test_delete_contact_from_group(app, orm):
     group = random.choice(orm.get_group_list())

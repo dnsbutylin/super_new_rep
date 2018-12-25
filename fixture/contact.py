@@ -82,8 +82,8 @@ class ContactHelper:
     def delete_contact_from_group(self, contact_id, group):
         wd = self.app.wd
         self.open_contact_list()
-        wd.find_element_by_name("group").click()
-        Select(wd.find_element_by_name("group")).select_by_visible_text(group.name)
+        #wd.find_element_by_name("group").click()
+        #Select(wd.find_element_by_name("group")).select_by_visible_text(group.name)
         wd.find_element_by_xpath("//option[@value='%s']" % str(group.id)).click()
         self.select_contact_by_id(contact_id)
         wd.find_element_by_name("remove").click()
@@ -137,11 +137,12 @@ class ContactHelper:
         self.open_contact_list()
         return len(wd.find_elements_by_name('selected[]'))
 
-    def add_to_group(self, contact_id, group_name):
+    def add_to_group(self, contact_id, group_id):
         wd = self.app.wd
         self.open_contact_list()
         self.select_contact_by_id(contact_id)
-        Select(wd.find_element_by_name("to_group")).select_by_visible_text(group_name)
+        #Select(wd.find_element_by_name("to_group")).select_by_visible_text(group_name)
+        wd.find_element_by_css_selector("select[name=\"to_group\"] > option[value=\"%s\"]" %group_id).click()
         wd.find_element_by_name("add").click()
 
 
