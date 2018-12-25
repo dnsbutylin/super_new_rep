@@ -9,5 +9,5 @@ def test_delete_contact_from_group(app, orm):
         assert True
     else:
         contact = random.choice(l)
-        app.contact.delete_contact_from_group(contact.id, group)
+        app.contact.delete_contact_from_group(contact.id, group.id)
         assert contact in orm.get_contacts_not_in_group(group)
